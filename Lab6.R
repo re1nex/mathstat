@@ -45,13 +45,13 @@ print(data_lad_out$coefficients)
 
 ggplot(data_lm, aes(x, y))+
   geom_point() +
-  stat_smooth(method = "lm",col="black")+
+  stat_smooth(method = "lm",col="black",formula = y ~ x,se=FALSE)+
   stat_function(fun = function (x) (data_lad_out$coefficients[1] + data_lad_out$coefficients[2] * x), col = "blue")+
-  geom_line(data=data.frame(x=c(-1.8,2),y=c(data_lin_reg$y[1],data_lin_reg$y[length(data_lin_reg$y)])),col="red")
+  stat_function(fun = function (x) (2 + 2 * x), col = "red")
 
 
 ggplot(data_lm_out, aes(x, y)) +
   geom_point() +
-  stat_smooth(method = "lm",col="black")+
+  stat_smooth(method = "lm",col="black",formula = y ~ x,se=FALSE)+
   stat_function(fun = function (x) (data_lad_out$coefficients[1] +  data_lad_out$coefficients[2] * x), col = "blue")+
-  geom_line(data=data.frame(x=c(-1.8,2),y=c(data_lin_reg_out$y[1],data_lin_reg_out$y[length(data_lin_reg_out$y)])),col="red")
+  stat_function(fun = function (x) (2 + 2 * x), col = "red")
